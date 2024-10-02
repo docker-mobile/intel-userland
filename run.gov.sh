@@ -62,7 +62,6 @@ else
     rm -rf files.zip >/dev/null 2>err.log
     rm -rf root.zip >/dev/null 2>err.log
     rm -rf root.tar.gz >/dev/null 2>err.log
-
     cmds=(
         "apt-get update"
         "apt-get -y upgrade"
