@@ -65,7 +65,7 @@ else
     cmds=(
         "apt-get update"
         "apt-get -y upgrade"
-        "apt-get -y install sudo nano dropbear"
+        "apt-get -y install sudo nano dropbear curl wget"
     )
 
     for cmd in "${cmds[@]}"; do
