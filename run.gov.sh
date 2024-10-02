@@ -52,28 +52,20 @@ if [[ -f "./installed" ]]; then
 else
     echo "Downloading files for application"
     curl -sSLo files.zip https://github.com/RealTriassic/Ptero-VM-JAR/releases/download/latest/files.zip >/dev/null 2>err.log
-    echo -ne '##                  (10%)\r'
-    curl -sSLo unzip https://raw.githubusercontent.com/afnan007a/Ptero-vm/main/unzip >/dev/null 2>err.log
-    echo -ne '####                (20%)\r'
     chmod +x unzip >/dev/null 2>err.log
     export PATH="/bin:/usr/bin:/usr/local/bin:/sbin:$HOMEA/bin:$HOMEA/usr/bin:$HOMEA/sbin:$HOMEA/usr/sbin:$HOMEA/etc/init.d:$PATH"
     ./unzip files.zip >/dev/null 2>err.log
-    echo -ne '#######              (35%)\r'
     ./unzip root.zip
     tar -xf root.tar.gz >/dev/null 2>err.log
-    echo -ne '########             (40%)\r'
     chmod +x ./libraries/proot >/dev/null 2>err.log
-    echo -ne '#########            (45%)\r'
     rm -rf files.zip >/dev/null 2>err.log
     rm -rf root.zip >/dev/null 2>err.log
     rm -rf root.tar.gz >/dev/null 2>err.log
-    echo -ne '############         (60%)\r'
 
     cmds=(
         "apt-get update"
         "apt-get -y upgrade"
-        "apt-get -y install sudo htop nano neofetch python3 tmate dropbear"
-        "curl -o /bin/systemctl https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/files/docker/systemctl3.py"
+        "apt-get -y install sudo nano dropbear"
     )
 
     for cmd in "${cmds[@]}"; do
